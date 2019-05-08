@@ -1,0 +1,22 @@
+.bg-light {
+    
+    background-color:#ccc!important;
+}
+.navbar-brand{
+    color:#fff!important;
+}
+.espaco-padrao{
+    margin-top:5%!important;
+}
+.btn-primary{
+    background-color:#AF1D23!important;
+    border: 1px #AF1D23;
+}
+h2{
+    color:#AF1D23!important;
+    font-size:22pt;
+
+}
+.table{
+    overflow: scroll!important;
+}

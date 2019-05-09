@@ -10,6 +10,18 @@
 
         <h2 class="espaco-padrao">Minhas ordens </h2>
 </div>
+<div class="col-md-12">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Carteira</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
         <?php
        
         $consulta = "Select * from ordens where email = '$logado' ";
@@ -23,18 +35,7 @@
             $status = $rows['status'];
 
             ?>
-<div class="col-md-12">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Codigo</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Carteira</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
+
         <div class="col-md-12">
             <div class="row">
       <th scope="row"><?php echo $codigo?></th>

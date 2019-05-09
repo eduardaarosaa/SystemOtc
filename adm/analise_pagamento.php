@@ -9,7 +9,7 @@ $resultado = mysqli_query($link,$update);
 
 if($resultado == true){
 
-    header("location:../adm/ordens.php?cod=<?=$cod_ordens;?>");
+    header("location:../adm/ordens.php?cod=$cod_ordens");
 }else{
 
     echo "Error";

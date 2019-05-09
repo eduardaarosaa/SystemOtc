@@ -44,7 +44,7 @@ include "menu.php";
 </table>
 
 
-<button class="btn btn-black espaco-padrao">Alterar dados</button>
+<a href="../Telas/alterar_dados.php"><button class="btn btn-black espaco-padrao">Alterar dados</button></a>
 <button class="btn btn-black espaco-padrao">Alterar senha</button>
 
 </div>

@@ -10,7 +10,7 @@
 }
 .btn-primary{
     background-color:#AF1D23!important;
-    border: 1px #AF1D23;
+    border: 1px #AF1D23!important;
 }
 h2{
     color:#AF1D23!important;

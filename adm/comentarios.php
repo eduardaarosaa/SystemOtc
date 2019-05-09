@@ -1,12 +1,24 @@
 <?php
-$cod_ordens=$_GET['cod'];
-include "conexao.php";
-$comentario=$_GET["comentario"];
+$cod_ordens=$_POST['codigo'];
+echo $cod_ordens;
+include "../Back/conexao.php";
+$comentario=$_POST["comentario"];
 
-$sql="insert into comentarios(comentario, cod) values('$comentario','$cod_ordens')";
+$dia = mktime(date('d'), date('m'), date('y'));
+
+$data1 = gmdate('d/m/Y',$dia);
+
+print $data1;
+
+$time = mktime(date('H')-3, date('i'), date('s'));
+
+$hora = gmdate("H:i:s", $time);
+
+
+$sql="insert into comentarios(comentario, cod_ordens, data, hora) values('$comentario','$cod_ordens','$data1','$hora')";
 	$query=$link->query($sql);
 	//if($query){
-	header("location:ordens.php?id=".$cod_ordens."");
+	header("location:ordens.php?cod=$cod_ordens");
 
 	//}
 

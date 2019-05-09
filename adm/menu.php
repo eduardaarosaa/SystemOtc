@@ -20,7 +20,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Ordens <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../adm/adm.php">Ordens</a>
       <a class="nav-item nav-link" href="#">Documentos</a>
       <a class="nav-item nav-link" href="#">Buscar</a>
       <a class="nav-item nav-link" href="../Back/sair.php">Sair</a>

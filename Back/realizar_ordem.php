@@ -13,7 +13,7 @@ $dia = mktime(date('d'), date('m'), date('y'));
 
 $data1 = gmdate('d/m/Y',$dia);
 
-print $data1;
+//print $data1;
 
 $time = mktime(date('H')-3, date('i'), date('s'));
 

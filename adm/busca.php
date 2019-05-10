@@ -1,29 +1,21 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" type="text/css" href="../style/style_busca.css">
-</head>
 <?php
+include "../Telas/sessao.php";
 include "../adm/menu.php";
-include "../Back/conexao.php"; 
+include "../Back/conexao.php";
+
 ?>
 
+<head>
+<link rel="stylesheet" type="text/css" href="../style/style.css">
+</head>
+
 <div class='container'>
-    <div class='row'>
-        <div class='col-md-12'>
-            <h2 class='espaco-padrao'>Ordens solicitadas</h2>
-  </div>
-</div>
+    <div classs="row">
+        <div class="col-md-12">
 
-<div class="row">
-    <div class="col-md-12">
-    <form action="../adm/busca.php" method="POST" class='espaco-padrao'>
-    <input type="text" name='busca' placeholder="Busca..."><button type="submit" class="btn btn-danger">Buscar</button>
-    
-</form>
-    </div>
-</div>
+            <h2 class='espaco-padrao'>Resultados </h2>
 
-<div class="row">
+            <div class="row">
     <div class="col-md-12">
 
     <table class="table table-bordered">
@@ -41,20 +33,25 @@ include "../Back/conexao.php";
     <tr>
 
     <?php
-       
-       $consulta = "Select * from ordens where status != '4'";
-       $resultado = mysqli_query($link,$consulta);
 
-       foreach ($resultado as $rows){ 
+$busca = $_POST['busca'];
 
-           $codigo = $rows['cod'];
-           $quantidade = $rows['quantidade'];
-           $carteira = $rows['carteira'];
-           $status = $rows['status'];
-           $email = $rows['email'];
+$consulta = ("select * from ordens where email LIKE '%$busca%'");
+$resultado = mysqli_query($link,$consulta);
+if($resultado == true){
 
-           ?>
-        <div class="col-md-12">
+    foreach($resultado as $rows){
+
+        $codigo = $rows['cod'];
+        $quantidade = $rows['quantidade'];
+        $carteira = $rows['carteira'];
+        $status = $rows['status'];
+        $email = $rows['email'];
+    
+    
+?>
+
+<div class="col-md-12">
             <div class="row">
       <th scope="row"><?php echo $codigo?></th>
             </div>
@@ -97,6 +94,7 @@ include "../Back/conexao.php";
       <td><?php echo $email ?></td>
             </div>
         </div>
+
             <div class="col-md-12">
             <div class="row">
       <td align='center'><a href="ordens.php?cod= <?=$codigo;?>"><button type="button" class="btn btn-danger">Alterar</button></a></td>
@@ -106,7 +104,7 @@ include "../Back/conexao.php";
     </tr>
 
          <?php   
-
+    }
         }
 
         ?>
@@ -116,10 +114,5 @@ include "../Back/conexao.php";
     </div>
 
 </div>
+    </div>
 
-
-
-
-
-
-</div>

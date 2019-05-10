@@ -20,3 +20,6 @@ h2{
 .table{
     overflow: scroll!important;
 }
+.dropdown-item :hover a{
+    background-color:#DC3545!important;
+}

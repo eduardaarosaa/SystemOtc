@@ -5,6 +5,43 @@
 
 ?>
 
+<?php
+        //Verificar a pagina anterior e posterior
+        
+        //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+//echo $pagina;
+
+//Selecionar todos os produtos da tabela
+$result_produtos = "SELECT * FROM ordens where email = '$logado'";
+$resultado_produtos = mysqli_query($link, $result_produtos);
+
+//Contar o total de produtos
+$total_produtos = mysqli_num_rows($resultado_produtos);
+//echo $total_produtos;
+
+//Seta a quantidade de produtos por pagina
+$quantidade_pg = 5;
+// $quantidade_pg;
+
+//calcular o número de pagina necessárias para apresentar os cursos
+$num_pagina = ceil($total_produtos/$quantidade_pg);
+
+//echo $num_pagina;
+
+//Calcular o inicio da visualizacao
+$inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+//echo $inicio;
+
+//Selecionar os produtos a serem apresentado na página
+$result_produtos = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg";
+$resultado_produtos= mysqli_query($link, $result_produtos);
+$total_produtos = mysqli_num_rows($resultado_produtos);
+
+				$pagina_anterior = $pagina - 1;
+				$pagina_posterior = $pagina + 1;
+			?>
 <div class="container">
     <div class="col-md-12">
 
@@ -18,13 +55,21 @@
       <th scope="col">Quantidade</th>
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>
+      <th scope="col">Comentário</th>
     </tr>
   </thead>
   <tbody>
     <tr>
         <?php
-       
-        $consulta = "Select * from ordens where email = '$logado' ";
+        $consulta_comentarios = "SELECT * FROM comentarios where email = '$logado' limit $inicio,$quantidade_pg";
+        $resultado1 = mysqli_query($link,$consulta_comentarios);
+
+        foreach ($resultado1 as $linha){
+
+          $comentario = $linha['comentario'];
+
+        }
+        $consulta = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg";
         $resultado = mysqli_query($link,$consulta);
 
         foreach ($resultado as $rows){ 
@@ -73,6 +118,11 @@
       }
       
        ?></td>
+        <div class="col-md-12">
+            <div class="row">
+      <td><?php echo $comentario ?></td>
+            </div>
+        </div>
             </div>
         </div>
     </tr>
@@ -85,8 +135,41 @@
         </tbody>
 </table>
     </div>
-
-
-
+					<nav class="text-center">
+				<ul class="pagination">
+					<li>
+						<?php
+						if($pagina_anterior != 0){ ?>
+							<a class='pagina' href="minhas_ordens.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						<?php }else{ ?>
+							<span aria-hidden="true">&laquo;</span>
+					<?php }  ?>
+					</li>
+					<?php 
+					//Apresentar a paginacao
+					for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+						<li><a class='pagina' href="minhas_ordens.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+					<?php } ?>
+					<li>
+						<?php
+						if($pagina_posterior <= $num_pagina){ ?>
+							<a class='pagina' href="minhas_odens.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						<?php }else{ ?>
+							<span aria-hidden="true">&raquo;</span>
+					<?php }  ?>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
 
 </div>

@@ -55,20 +55,15 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
       <th scope="col">Quantidade</th>
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>
-      <th scope="col">Comentário</th>
+      <th scope="col">Detalhes</th>
+
+      
     </tr>
   </thead>
   <tbody>
     <tr>
         <?php
-        $consulta_comentarios = "SELECT * FROM comentarios where email = '$logado' limit $inicio,$quantidade_pg";
-        $resultado1 = mysqli_query($link,$consulta_comentarios);
-
-        foreach ($resultado1 as $linha){
-
-          $comentario = $linha['comentario'];
-
-        }
+      
         $consulta = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg";
         $resultado = mysqli_query($link,$consulta);
 
@@ -78,6 +73,7 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
             $quantidade = $rows['quantidade'];
             $carteira = $rows['carteira'];
             $status = $rows['status'];
+
 
             ?>
 
@@ -118,13 +114,15 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
       }
       
        ?></td>
+       </div>
+        </div>
         <div class="col-md-12">
             <div class="row">
-      <td><?php echo $comentario ?></td>
+       <td align='center'><a href="../adm/ordens.php?cod= <?=$codigo;?>"><button type="button" class="btn btn-danger">Ver</button></a></td>
+
             </div>
         </div>
-            </div>
-        </div>
+        
     </tr>
 
          <?php   
@@ -132,6 +130,8 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
         }
 
         ?>
+
+        
         </tbody>
 </table>
     </div>

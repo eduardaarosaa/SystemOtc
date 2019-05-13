@@ -1,5 +1,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../style/login.css">
+<link rel="stylesheet" type="text/css" href="../style/animate.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -8,7 +9,7 @@
 <body>
 <div class="sidenav">
          <div class="login-main-text">
-            <img src="../Imagens/logo.jpg" width="180px"><br><br>
+            <img class='bounce' src="../Imagens/logo.jpg" width="180px"><br><br>
             <p>Cadastre-se ou faça login para ter acesso.</p>
          </div>
       </div>

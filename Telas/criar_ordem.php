@@ -49,7 +49,10 @@ include "menu.php";
 
 </script>
 </head>
-
+<?php 
+		if($ativo == 1){
+			?>
+		
 <div class='container'> 
     <div class="col-md-12">
     <h2 class="espaco-padrao">Criar uma ordem</h2>
@@ -74,4 +77,24 @@ include "menu.php";
 
   <button type="submit" style="margin-left:1%" class="btn btn-primary" onclick="verificar_foto()">Cadastrar</button>
 </form>
+<?php } else { ?>
+	<div class="container">
+	<div class="row espaco-padrao">
+		<div class="col-md-12">
+	<div class="jumbotron">
+  <h1 class="display-4">Bem-vindo!</h1>
+  <p class="lead">É necessário enviar seus documentos para criar uma ordem.</p>
+  <hr class="my-4">
+  <p>Clique em Meu perfil e na tela meu pefil clique em documentos</p>
+  <a class="btn btn-primary btn-lg" href="../Telas/meu_perfil.php" role="button">Meu perfil</a>
 </div>
+		</div>
+	</div>
+	</div>
+
+<?php } ?>
+</div>
+
+
+
+	

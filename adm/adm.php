@@ -1,8 +1,9 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" type="text/css" href="../style/style_busca.css">
+
 </head>
 <?php
+include "../Telas/sessao.php";
 include "../adm/menu.php";
 include "../Back/conexao.php"; 
 ?>
@@ -17,7 +18,13 @@ include "../Back/conexao.php";
 <div class="row">
     <div class="col-md-12">
     <form action="../adm/busca.php" method="POST" class='espaco-padrao'>
-    <input type="text" name='busca' placeholder="Busca..."><button type="submit" class="btn btn-danger">Buscar</button>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="busca" aria-describedby="emailHelp" placeholder="Busca" require="required">
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+    <button type="submit" class="btn btn-danger">Buscar</button>
+      </div>
+    </div>
     
 </form>
     </div>

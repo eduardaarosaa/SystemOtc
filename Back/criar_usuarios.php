@@ -23,7 +23,7 @@ $dia = mktime(date('d'), date('m'), date('y'));
 
 $data1 = gmdate('d/m/Y',$dia);
 
-print $data1;
+//print $data1;
 
 $time = mktime(date('H')-3, date('i'), date('s'));
 
@@ -40,7 +40,7 @@ $result = mysqli_query($link,$inserir);
 if($result == true){
     echo ("<script>
     window.alert('Cadastro realizado com sucesso!')
-    window.location.href='../telas/criar_ordem.php';
+    window.location.href='../telas/login.php';
     </script>");
 }elseif($result == false){
 

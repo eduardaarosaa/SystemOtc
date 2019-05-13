@@ -30,10 +30,6 @@ include "head.php";
 			alert("Preencha o campo nome") ;
 			erro = true ;
 		}
-	if (document.form1.cpf.value == ""){
-			alert("Preencha o campo cpf") ;
-			erro = true ;
-		}
     if (document.form1.agencia.value == ""){
 			alert("Preencha o campo agencia") ;
 			erro = true ;
@@ -70,19 +66,19 @@ include "head.php";
 <div class="form-group espaco-padrao">
     <form action="../Back/criar_usuarios.php" method="POST" name="form1" enctype="multipart/form-data">
     <label for="exampleInputEmail1">Nome</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="nome" aria-describedby="emailHelp" placeholder="Digte seu nome" require="required">
+    <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" placeholder="Digte seu nome" require="required">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">CPF</label>
-    <input type="number" class="form-control" id="exampleInputEmail1" name="cpf" aria-describedby="emailHelp" placeholder="Digte seu CPF">
+    <input type="number" class="form-control" id="CPF" name="CPF" aria-describedby="emailHelp" placeholder="Digte seu CPF">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Agência</label>
-    <input type="number" class="form-control" id="exampleInputEmail1" name="agencia" aria-describedby="emailHelp" placeholder="Digte sua agência">
+    <input type="number" class="form-control" id="agencia" name="agencia" aria-describedby="emailHelp" placeholder="Digte sua agência" require="required">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Número da conta</label>
-    <input type="number" class="form-control" id="exampleInputEmail1" name="numero_conta" aria-describedby="emailHelp" placeholder="Digte o número da conta">
+    <input type="number" class="form-control" id="numero_conta" name="numero_conta" aria-describedby="emailHelp" placeholder="Digte o número da conta">
     <small id="emailHelp" class="form-text text-muted">Observação: Número da conta com o digíto. </small>
   </div>
   <div class="form-group">
@@ -91,7 +87,7 @@ include "head.php";
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Digte seu e-mail">
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digte seu e-mail">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Senha</label>
@@ -112,3 +108,5 @@ include "head.php";
   <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
 </div>
 </div>
+
+<!-- Validações em JQUERY -->

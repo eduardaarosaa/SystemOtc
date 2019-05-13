@@ -62,6 +62,7 @@ if($resultado == true){
 
 <a href="../Telas/alterar_dados.php"><button class="btn btn-black espaco-padrao">Alterar dados</button></a>
 <a href="../Telas/alterar_senha.php"><button class="btn btn-black espaco-padrao">Alterar senha</button></a>
+<a href="../Telas/enviar_documentos.php"><button class="btn btn-black espaco-padrao">Documentos</button></a>
 
 </div>
 

@@ -59,13 +59,16 @@ if($verificar> 0 && base64_encode($senha) == $rows['senha'] && $rows['nivel']==2
         header("location:../Telas/criar_ordem.php");
 
 }elseif($verificar> 0 && base64_encode($senha) == $rows['senha'] && $rows['nivel']==1){
+        
         $_SESSION['email'] = $email;
         $_SESSION['senha'] = $senha;
+        
         $dados = mysqli_fetch_assoc($resultado);
         $_SESSION['cpf'] = $rows['cpf'];
-        $_SESSION['cod'] = $rows['cod'];
+        $_SESSION['cod'] = $rows['cod'];  
         $_SESSION['nivel'] = $rows['nivel'];
         $_SESSION['ativo'] = $rows['ativo'];
+      
         header("location:../adm/adm.php");
 }else{
     echo ("<script>

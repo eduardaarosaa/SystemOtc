@@ -31,6 +31,16 @@ $hora = gmdate("H:i:s", $time);
 
 move_uploaded_file($_FILES['file']['tmp_name'], "C:\\xampp\\htdocs\\otc\\documentos\\$nome_foto");	
 
+$consulta = "Select * from usuarios where email = '$email'";
+$resultado = mysqli_query($link,$consulta);
+$linha = mysqli_num_rows($resultado);
+
+if($linha > 0){
+    echo ("<script>
+    window.alert('Esse e-mail já está cadastrado!')
+    window.location.href='../telas/cadastro.php';
+    </script>");
+}else{
 
 
 $inserir = "Insert into usuarios(nome,cpf,agencia,numero_conta,banco,email,senha,tipo,nome_foto,tamanho,nivel,data,hora) values ('$nome','$cpf','$agencia','$conta','$banco','$email','$senha','$tipo','$nome_foto','$tamanho','$nivel','$data1','$hora')";
@@ -50,6 +60,7 @@ if($result == true){
     </script>");
     //echo "Error:" . $inserir . "<br>" . mysqli_error($link);
     
+}
 }
 ?>
 

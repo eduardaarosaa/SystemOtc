@@ -2,7 +2,9 @@
 include "head.php";
 ?>
 <head>
-<script type="text/javascript">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+  <script type="text/javascript">
 	function updatepicture(e){
 		var img = e.files[0];
 		var rea = new FileReader();
@@ -18,7 +20,7 @@ include "head.php";
 	function verificar_foto(){
 		//alert("teste");
 		if (document.forms[ 'form1' ].file.value == '' && document.getElementById("image").src==""){
-			alert("Anexe a selfil");
+			alert("Anexe a selfie!!");
 			return false;
 		} 
 
@@ -70,7 +72,7 @@ include "head.php";
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">CPF</label>
-    <input type="number" class="form-control" id="CPF" name="CPF" aria-describedby="emailHelp" placeholder="Digte seu CPF">
+    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digte seu CPF">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Agência</label>
@@ -110,3 +112,6 @@ include "head.php";
 </div>
 
 <!-- Validações em JQUERY -->
+<script>
+jQuery("#cpf").mask("999.999.999-99");
+</script>

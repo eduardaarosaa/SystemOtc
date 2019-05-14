@@ -1,4 +1,5 @@
-<div class='container'>
+<div id="loader" class="loader"></div>
+<div style="display:none" id="tudo_page">
   <?php
   include "sessao.php";
   ?>
@@ -49,13 +50,14 @@ include "menu.php";
 
 </script>
 </head>
+<body>
 <?php 
 		if($ativo == 1){
 			?>
-		
 <div class='container'> 
     <div class="col-md-12">
-    <h2 class="espaco-padrao">Criar uma ordem</h2>
+		<h2 class="espaco-padrao">Criar uma ordem</h2>
+		
 </div>
     <div class="col-md-12">
 <div class="form-group">
@@ -73,7 +75,7 @@ include "menu.php";
 <img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
 <iframe style="display:none" name="iframe"></iframe>
   </div>
-  </div>
+		</div>
 
   <button type="submit" style="margin-left:1%" class="btn btn-primary" onclick="verificar_foto()">Cadastrar</button>
 </form>
@@ -94,6 +96,16 @@ include "menu.php";
 
 <?php } ?>
 </div>
+
+</body>
+<script>
+jQuery(window).load(function () {
+      $(".loader").delay(50).fadeOut("slow"); //retire o delay quando for copiar!
+    $("#tudo_page").toggle("fast");
+});
+</script>
+
+</html>
 
 
 

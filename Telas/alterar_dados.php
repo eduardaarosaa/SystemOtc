@@ -1,3 +1,5 @@
+<head>
+</head>
 <?php
 include "../Telas/sessao.php";
 include "../Telas/menu.php";
@@ -47,3 +49,4 @@ if($resultado == true ){
   
 </div>
 </div>
+

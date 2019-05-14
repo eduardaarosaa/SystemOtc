@@ -62,16 +62,20 @@ include "../Back/conexao.php";
         <h2 class="espaco-padrao">Envie seus documentos</h2>
         </div>
 </div>
+<?php
+$consulta = "SELECT * FROM  documentos where cod_user = $cod";
+$resultado = mysqli_query($link,$consulta);
+$linha = mysqli_num_rows($resultado);
 
+if ($linha == 0){ ?>
 <div class="row">
     <div class="col-md-6">
         <div class="form-group espaco-padrao">
             <form action="../Back/documentos.php" method="POST" name="form1" enctype="multipart/form-data">
             <div class="form-group">
+            <input type="hidden" id="cod" name="cod" value="<?php echo $cod; ?>" />
             <input type="file" id="file" name="file" onchange="updatepicture(this);" />
             <p id="message">Envie seu RG/CNH</p>
-            <img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
-            <iframe style="display:none" name="iframe"></iframe>
             </div>
             </div>
 </div>
@@ -80,9 +84,8 @@ include "../Back/conexao.php";
         
             <div class="form-group">
             <input type="file" id="file" name="file1" onchange="updatepicture1(this);" />
-            <p id="message">Envie uma selfie segurando seu RG/CNH</p>
-            <img style="min-height:120;min-width:200;max-height:120px;" id="image1"/><br>
-            <iframe style="display:none" name="iframe"></iframe>
+            <p id="message1">Envie uma selfie segurando seu RG/CNH</p>
+           
             </div>
             </div>
 </div>
@@ -95,3 +98,7 @@ include "../Back/conexao.php";
  </div>
 </form>
   </div>
+<?php } else{
+
+    echo "Documentos enviados";
+}

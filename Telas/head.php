@@ -7,8 +7,8 @@
     </head>
     <body>
         <!-- As a link -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="../Imagens/logo.png" width="50px"></a>
+<nav class="navbar navbar-light bg-danger">
+  <a class="navbar-brand" href="#"><img src="../Imagens/logo.jpg" width="50px"></a>
 </nav>
 
 </body>

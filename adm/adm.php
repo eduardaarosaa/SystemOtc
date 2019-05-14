@@ -1,11 +1,18 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    
 
-</head>
+  </head>
+<div id="loader" class="loader"></div>
+<div style="display:none" id="tudo_page">
 <?php
 include "../Telas/sessao.php";
 include "../adm/menu.php";
 include "../Back/conexao.php"; 
+
+//echo "<meta HTTP-EQUIV='refresh' CONTENT='5;URL=../adm/adm.php'>";
+
 ?>
 
 <div class='container'>
@@ -48,9 +55,10 @@ include "../Back/conexao.php";
     <tr>
 
     <?php
-       
+    
        $consulta = "Select * from ordens where status != '4'";
        $resultado = mysqli_query($link,$consulta);
+       
 
        foreach ($resultado as $rows){ 
 
@@ -130,3 +138,13 @@ include "../Back/conexao.php";
 
 
 </div>
+      </body>
+
+<script>
+jQuery(window).load(function () {
+      $(".loader").delay(50).fadeOut("slow"); //retire o delay quando for copiar!
+    $("#tudo_page").toggle("fast");
+});
+</script>
+
+</html>

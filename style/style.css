@@ -1,7 +1,4 @@
-.bg-light {
-    
-    background-color:#ccc!important;
-}
+
 .navbar-brand{
     color:#fff!important;
 }
@@ -22,4 +19,13 @@ h2{
 }
 .dropdown-item :hover a{
     background-color:#DC3545!important;
+}
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('https://shop.purgatoryresort.com/bundles/spotliowebappfront/purgatoryresort/images/ajax-loader.gif') 50% 50% no-repeat white;
 }

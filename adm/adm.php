@@ -56,7 +56,7 @@ include "../Back/conexao.php";
 
     <?php
     
-       $consulta = "Select * from ordens where status != '4'";
+       $consulta = "Select * from ordens where status != '4' order by cod desc";
        $resultado = mysqli_query($link,$consulta);
        
 

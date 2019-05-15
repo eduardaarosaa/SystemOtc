@@ -14,6 +14,7 @@ include "head.php";
 			var end = rea.result;
 			var iframe = document.getElementById("image");
 			iframe.src = end;
+      return false;
 		}
 		//document.getElementById("image").setAttribute("src",pic);
 	}
@@ -52,10 +53,15 @@ include "head.php";
 			alert("Preencha o campo senha") ;
 			erro = true ;
 		}
+    if (document.form1.file.value == ""){
+			alert("Anexe a selfie!!");
+			erro = true;
+		}
    
 	if (erro==false) {
 		document.form1.submit();
 	}
+ 
 	}
 
 </script>
@@ -68,44 +74,47 @@ include "head.php";
 <div class="form-group espaco-padrao">
     <form action="../Back/criar_usuarios.php" method="POST" name="form1" enctype="multipart/form-data">
     <label for="exampleInputEmail1">Nome</label>
-    <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" placeholder="Digte seu nome" require="required">
+    <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" placeholder="Digte seu nome" required>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">CPF</label>
     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digte seu CPF">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Agência</label>
-    <input type="number" class="form-control" id="agencia" name="agencia" aria-describedby="emailHelp" placeholder="Digte sua agência" require="required">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Número da conta</label>
-    <input type="number" class="form-control" id="numero_conta" name="numero_conta" aria-describedby="emailHelp" placeholder="Digte o número da conta">
-    <small id="emailHelp" class="form-text text-muted">Observação: Número da conta com o digíto. </small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Banco</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="banco" aria-describedby="emailHelp" placeholder="Digte o nome do Banco">
-  </div>
-  <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digte seu e-mail">
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Digte seu e-mail" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="senha" placeholder="Digite sua senha">
+    <input type="password" class="form-control" id="exampleInputPassword1" name="senha" placeholder="Digite sua senha" required>
     <small id="emailHelp" class="form-text text-muted">Observação: A senha precisa conter letras minusculas, maiusculas e 1 caracter especial. </small>
   </div>
+  <hr> 
+  <h2> Dados bancários</h2>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Banco</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="banco" aria-describedby="emailHelp" placeholder="Digte o nome do Banco" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Agência</label>
+    <input type="number" class="form-control" id="agencia" name="agencia" aria-describedby="emailHelp" placeholder="Digte sua agência" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Número da conta</label>
+    <input type="number" class="form-control" id="numero_conta" name="numero_conta" aria-describedby="emailHelp" placeholder="Digte o número da conta" required>
+    <small id="emailHelp" class="form-text text-muted">Observação: Número da conta com o digíto. </small>
+  </div>
+  
 
   <div class="form-group">
-  <input type="file" id="file" name="file" onchange="updatepicture(this);" />
-<p id="message">Envie uma selfie com uma folha escrita quero comprar bitcoins na Bloco1 com a data</p>
-<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
+  <p id="message"><b>Envie uma selfie com uma folha escrita quero comprar bitcoins na Bloco1 com a data de hoje<b></p>
+  <img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
+  <input type="file" id="file" name="file" onchange="updatepicture(this);" required />
 <iframe style="display:none" name="iframe"></iframe>
   </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" onclick="verificar_foto()">Cadastrar</button>
+  <button type="submit" class="btn btn-primary" >Cadastrar</button>
 </form>
   <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
 </div>

@@ -9,6 +9,7 @@
 <body>
 <div class="sidenav">
          <div class="login-main-text">
+            <h1>Mesa Balcão</h1>
             <img class='bounce' src="../Imagens/logo.jpg" width="180px"><br><br>
             <p>Cadastre-se ou faça login para ter acesso.</p>
          </div>

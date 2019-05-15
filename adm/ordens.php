@@ -59,6 +59,24 @@ while($rows = mysqli_fetch_array($exibir)){
             <div class="row">
       <td width="5%"><?php 
           
+          if($nivel == 2){
+            switch ($status){
+            case 0: echo "Pagamento em análise";
+            break;
+            case 1: echo "Pagamento aprovado";
+            break;
+            case 2: echo "Pagamento reprovado";
+            break;
+            case 3: echo "Processando";
+            break;
+            case 4: echo "Ordem concluída";
+            break;
+         
+            } 
+        
+          } else{
+
+          
           if($status == 0){
             echo '<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           
@@ -69,38 +87,38 @@ while($rows = mysqli_fetch_array($exibir)){
            
            
             
-    </button>
+    </button> 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="analise_pagamento.php?cod='. $cod_ordens .'">Pagamento em análise</a>
     <a class="dropdown-item" href="pagamento_aprovado.php?cod='. $cod_ordens .'">Pagamento aprovado</a>
     <a class="dropdown-item" href="pagamento_reprovado.php?cod='. $cod_ordens .'">Pagamento reprovado</a>
-    <a class="dropdown-item" href="processamento.php?cod= '. $cod_ordens .'">Processamento</a>
+    <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
     <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>
     ';
 
     
         }elseif($status == 1){
             echo'<button class=" btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-     Documentação aprovada
+     Pagamento aprovado
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     
     <a class="dropdown-item" href="analise_pagamento.php?cod='. $cod_ordens.'">Pagamento em análise</a>
     <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
     <a class="dropdown-item" href="pagamento_reprovado.php?cod='. $cod_ordens .'">Pagamento reprovado</a>
-    <a class="dropdown-item" href="processamento.php?cod= '. $cod_ordens .'">Processamento</a>
+    <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
     <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
         }elseif($status == 2){
 
           echo'<button class="btn btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Documentação reprovada
+         Pagamento reprovado
          </button>
          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
          
          <a class="dropdown-item" href="analise_pagamento.php?cod='. $cod_ordens .'">Pagamento em análise</a>
          <a class="dropdown-item" href="pagamento_aprovado.php?cod='. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
-         <a class="dropdown-item" href="processamento.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
 
 
@@ -113,7 +131,7 @@ while($rows = mysqli_fetch_array($exibir)){
          <a class="dropdown-item" href="analise_pagamento.php?cod= '. $cod_ordens .'">Pagamento em análise</a>
          <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
-         <a class="dropdown-item" href="processamento.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
         }else{
           echo'<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,9 +142,9 @@ while($rows = mysqli_fetch_array($exibir)){
          <a class="dropdown-item" href="analise_pagamento.php?cod='. $cod_ordens .'">Pagamento em análise</a>
          <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
-         <a class="dropdown-item" href="processamento.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
-        }
+        }}
         echo '
     </div>
   </div></td>
@@ -211,7 +229,7 @@ if($resultado ==true  ){
     <tr>
     <div class='col-md-12'>
     <div class='row'>
-<td><?php  if($comentario != NULL) {echo $comentario;} else { echo "Nenhuma observação adicionada.";} ?></td>
+<td><?php  echo $comentario ?></td>
 </div>
 </div>
 <div class='col-md-12'>

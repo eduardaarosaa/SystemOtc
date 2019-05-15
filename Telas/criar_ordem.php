@@ -52,7 +52,7 @@ include "menu.php";
 </head>
 <body>
 <?php 
-		if($ativo == 1){
+		if($ativo == 1 || $ativo == 3){
 			?>
 <div class='container'> 
     <div class="col-md-12">
@@ -62,24 +62,25 @@ include "menu.php";
     <div class="col-md-12">
 <div class="form-group">
     <form name="form1" action="../Back/realizar_ordem.php" method="POST" enctype="multipart/form-data">
-    <label for="exampleInputEmail1">Digite a quantidade de bitcoins:</label>
-    <input type="number" class="form-control" id="quantidade" name="quantidade" aria-describedby="emailHelp" placeholder="Digite a quantidade de bitcoin" require="required">
+    <label for="exampleInputEmail1">Digite a fração de bitcoins:</label>
+    <input type="text" class="form-control" id="quantidade" name="quantidade" aria-describedby="emailHelp" maxlength="9" placeholder="Digite a fração de bitcoin" require="required">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Digite o número da carteira:</label>
-    <input type="text" class="form-control" id="carteira" name="carteira" aria-describedby="emailHelp" placeholder="Digte o número da carteira">
+    <label for="exampleInputEmail1">Copie o número da carteira (Wallet):</label>
+    <input type="text" class="form-control" id="carteira" name="carteira" aria-describedby="emailHelp" placeholder="Digte o número da carteira" require="required">
   </div>
   <div class="form-group">
+	<p id="message"><b>Selecione o comprovante de pagamento</b></p>
+	<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
   <input type="file" id="file" name="file" onchange="updatepicture(this);" />
-<p id="message">Selecione o comprovante de pagamento</p>
-<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
+
 <iframe style="display:none" name="iframe"></iframe>
   </div>
 		</div>
 
   <button type="submit" style="margin-left:1%" class="btn btn-primary" onclick="verificar_foto()">Cadastrar</button>
 </form>
-<?php } else { ?>
+<?php } elseif ($ativo == 0) { ?>
 	<div class="container">
 	<div class="row espaco-padrao">
 		<div class="col-md-12">
@@ -93,6 +94,24 @@ include "menu.php";
 		</div>
 	</div>
 	</div>
+
+<?php }else{ ?>
+
+	<div class="container">
+	<div class="row espaco-padrao">
+		<div class="col-md-12">
+	<div class="jumbotron">
+  <h1 class="display-4">Seus documentos foram REPROVADOS</h1>
+  <p class="lead">Envie novamente seus documentos</p>
+  <hr class="my-4">
+  <p>Clique em Meu perfil.Na tela meu pefil clique em documentos e veja o motivo da reprovação!</p>
+  <a class="btn btn-primary btn-lg" href="../Telas/meu_perfil.php" role="button">Meu perfil</a>
+</div>
+		</div>
+	</div>
+	</div>
+
+
 
 <?php } ?>
 </div>

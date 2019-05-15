@@ -67,15 +67,34 @@ $consulta = "SELECT * FROM  documentos where cod_user = $cod";
 $resultado = mysqli_query($link,$consulta);
 $linha = mysqli_num_rows($resultado);
 
-if ($linha == 0){ ?>
+foreach ($resultado as $rows){
+
+	$ativado = $rows['aprovado'];
+
+}
+
+
+
+	if ($linha == 0  || $ativo == 4){ 
+	
+		
+		?>
+
 <div class="row">
     <div class="col-md-6">
         <div class="form-group espaco-padrao">
             <form action="../Back/documentos.php" method="POST" name="form1" enctype="multipart/form-data">
             <div class="form-group">
+			<?php if($ativo == 4){
+				echo "";
+			}else{
+				echo "";
+			}
+			?>
+			<b><p id="message">Envie seu RG/CNH</p></b>
             <input type="hidden" id="cod" name="cod" value="<?php echo $cod; ?>" />
             <input type="file" id="file" name="file" onchange="updatepicture(this);" />
-            <p id="message">Envie seu RG/CNH</p>
+            
             </div>
             </div>
 </div>
@@ -83,8 +102,9 @@ if ($linha == 0){ ?>
         <div class="form-group espaco-padrao">
         
             <div class="form-group">
+			<b><p id="message1">Envie uma selfie segurando seu RG/CNH</p><b>
             <input type="file" id="file" name="file1" onchange="updatepicture1(this);" />
-            <p id="message1">Envie uma selfie segurando seu RG/CNH</p>
+            
            
             </div>
             </div>
@@ -98,7 +118,8 @@ if ($linha == 0){ ?>
  </div>
 </form>
   </div>
-<?php } else{
+<?php }  else{
 
     echo "Documentos enviados";
 }
+

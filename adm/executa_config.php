@@ -25,7 +25,7 @@ if($resultado == true){
     
     echo ("<script>
     window.alert('Configuração efetuada!')
-    window.location.href='../adm/adm.php';
+    window.location.href='../adm/ordens.php?cod=$cod_ordens';
     </script>");
 }else{
     echo "Erro! Entre em contato com a Bloco1";

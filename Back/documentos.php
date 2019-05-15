@@ -37,7 +37,7 @@ $resultado = mysqli_query($link,$update);
 
 if($result && $resultado == true){
     echo ("<script>
-    window.alert('Documentos enviados com sucesso!Logue novamente para criar uma ordem.')
+    window.alert('Documentos enviados com sucesso! Logue novamente para criar uma ordem.')
     window.location.href='../back/sair.php';
     </script>");
 }elseif($result && $resultado == false){

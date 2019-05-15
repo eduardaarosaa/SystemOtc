@@ -110,6 +110,7 @@ if($resultado == true){
         ?>
         </tbody>
 </table>
+<input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
 
     </div>
 

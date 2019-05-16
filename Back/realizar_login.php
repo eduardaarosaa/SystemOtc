@@ -70,7 +70,22 @@ if($verificar> 0 && base64_encode($senha) == $rows['senha'] && $rows['nivel']==2
         $_SESSION['ativo'] = $rows['ativo'];
       
         header("location:../adm/adm.php");
-}else{
+}elseif($verificar> 0 && base64_encode($senha) == $rows['senha'] && $rows['nivel']==3){
+        
+    $_SESSION['email'] = $email;
+    $_SESSION['senha'] = $senha;
+    $dados = mysqli_fetch_assoc($resultado);
+    $_SESSION['cpf'] = $rows['cpf'];
+    $_SESSION['nome'] = $rows['nome'];
+    $_SESSION['agencia']= $rows['agencia'];
+    $_SESSION['numero_conta'] = $rows['numero_conta'];
+    $_SESSION['banco'] = $rows['banco'];
+    $_SESSION['cod'] = $rows['cod'];
+    $_SESSION['nivel'] = $rows['nivel'];
+    $_SESSION['ativo'] = $rows['ativo'];
+    header("location:../Telas/criar_ordem.php");
+}
+else{
     echo ("<script>
     window.alert('Dados Inválidos!')
     window.location.href='../telas/login.php';

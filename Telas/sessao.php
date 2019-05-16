@@ -1,6 +1,7 @@
 <?php
 session_start();
 $nivel=$_SESSION['nivel'];
+$ativo = $_SESSION['ativo'];
 if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
 {
     unset($_SESSION['email']);
@@ -14,7 +15,7 @@ if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == tru
     unset($_SESSION['nivel']);
     header('location:../Telas/valida_sessao.php');
 }
-if($nivel == 2){
+if($nivel == 2 || $nivel == 3){
     $cod = $_SESSION['cod'];
     $logado = $_SESSION['email'];
     $nivel=$_SESSION['nivel'];

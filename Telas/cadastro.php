@@ -78,7 +78,8 @@ include "head.php";
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">CPF</label>
-    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digte seu CPF">
+    <input type="text" class="form-control" id="cpf" name="cpf"  placeholder="Digte seu CPF">
+    <span id='resultado-validacao'></span>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
@@ -124,3 +125,4 @@ include "head.php";
 <script>
 jQuery("#cpf").mask("999.999.999-99");
 </script>
+

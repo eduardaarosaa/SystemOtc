@@ -75,9 +75,11 @@ foreach ($resultado as $rows){
 
 
 
-	if ($linha == 0  || $ativo == 4){ 
+	if ($ativo == 3){ 
+
+		echo "Documentos enviados e aprovados";
+	}elseif($ativo == 4 || $linha == 0) {
 	
-		
 		?>
 
 <div class="row">
@@ -118,8 +120,9 @@ foreach ($resultado as $rows){
  </div>
 </form>
   </div>
-<?php }  else{
+<?php }  
+else{
 
-    echo "Documentos enviados";
+	echo "Documentos enviados.";
 }
 

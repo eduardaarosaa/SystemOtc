@@ -57,8 +57,15 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
     <button type="submit" class="btn btn-danger">Buscar</button>
       </div>
     </div>
-    
+    <br>
+
 </form>
+
+<div class='row'>
+        <div class='col-md-12'>
+        <a href="usuario_adm.php"><button class="btn btn-danger">Criar usuário</button></a>
+        </div>
+    </div>
     </div>
 </div>
 <div class="row">

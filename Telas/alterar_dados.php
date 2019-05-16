@@ -5,7 +5,7 @@ include "../Telas/sessao.php";
 include "../Telas/menu.php";
 include "../Back/conexao.php";
 
-$consulta = "Select * from usuarios where cpf = $cpf";
+$consulta = "Select * from usuarios where cod = $cod";
 $resultado = mysqli_query($link,$consulta);
 if($resultado == true ){
     while($rows=mysqli_fetch_array($resultado)) {

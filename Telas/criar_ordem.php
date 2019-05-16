@@ -68,7 +68,25 @@ include "menu.php";
   <div class="form-group">
     <label for="exampleInputEmail1">Copie o número da carteira (Wallet):</label>
     <input type="text" class="form-control" id="carteira" name="carteira" aria-describedby="emailHelp" placeholder="Digte o número da carteira" require="required">
-  </div>
+	</div>
+	<a class="btn btn-primary" href="javascript:void(0)" id="addInput">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				Adicionar Campo
+			</a>
+			<br/>
+			<div id="dynamicDiv">
+				<p>
+							<input type="text" id="inputeste" class="form-control"  size="20" value="" placeholder="" />
+							<br>
+			        <a class="btn btn-danger" href="javascript:void(0)" id="remInput">
+								
+			        	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+			        	Remover Campo
+					</a>
+		        </p>
+		    </div>
+
+	
   <div class="form-group">
 	<p id="message"><b>Selecione o comprovante de pagamento</b></p>
 	<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
@@ -122,8 +140,28 @@ jQuery(window).load(function () {
       $(".loader").delay(50).fadeOut("slow"); //retire o delay quando for copiar!
     $("#tudo_page").toggle("fast");
 });
+//Função usada para adicionar os campos dinamicamente.
 </script>
-
+		<script>
+			$(function () {
+			    var scntDiv = $('#dynamicDiv');
+			    $(document).on('click', '#addInput', function () {
+			        $('<p>'+
+		        		'<input type="text" id="inputeste" class="form-control" size="20" value="" placeholder="" /> '+
+		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput">'+
+							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
+							'Remover Campo'+
+		        		'</a>'+
+					'</p>').appendTo(scntDiv);
+			        return false;
+			    });
+			    $(document).on('click', '#remInput', function () {
+		            $(this).parents('p').remove();
+			        return false;
+			    });
+			});
+			</script>
+		</div>
 </html>
 
 

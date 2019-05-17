@@ -1,6 +1,9 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <script type="text/javascript" src="../Jquery/src/jquery.mask.min.js"></script>
+  
+
 </head>
 
 <?php
@@ -26,16 +29,16 @@ $cod_ordens = $_GET['cod'];
      
 <form action="../adm/executa_config.php" method="POST" name="form1" enctype="multipart/form-data">
     <input type="hidden" name='cod' value='<?php echo $cod_ordens; ?>'>
-    <label for="exampleInputEmail1">Cotação</label>
-    <input type="text" class="form-control ValoresItens" id="exampleInputEmail1" name="cotacao" aria-describedby="emailHelp" placeholder="Digte a cotação da ordem" require="required">
+    <label for="exampleInputEmail1">Preço de compra</label>
+    <input type="text" class="form-control real" id="real" name="valor_compra" aria-describedby="emailHelp" placeholder="Digte a cotação da ordem" require="required">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">FEE</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="fee" aria-describedby="emailHelp" placeholder="Digite o FEE da ordem">
+    <label for="exampleInputEmail1">Preço de venda</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="valor_venda" aria-describedby="emailHelp" placeholder="Digite o FEE da ordem">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Valor</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="valor" aria-describedby="emailHelp" placeholder="Digite o valor da ordem">
+    <label for="exampleInputEmail1">Preço da ordem</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="valor_ordem" aria-describedby="emailHelp" placeholder="Digite o valor da ordem">
   </div>
   <div class="row">
       <div class="col-md-12">
@@ -48,12 +51,5 @@ $cod_ordens = $_GET['cod'];
 </div>
 
 <script>
-  $(document).ready(function()
-{
-     $(".ValoresItens").maskMoney({
-         prefix: "R$:",
-         decimal: ",",
-         thousands: "."
-     });
-});
+   jQuery("#real").mask('#.##0,00');
 </script>

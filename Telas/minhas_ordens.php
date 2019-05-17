@@ -35,7 +35,7 @@ $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 //echo $inicio;
 
 //Selecionar os produtos a serem apresentado na página
-$result_produtos = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg";
+$result_produtos = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg ";
 $resultado_produtos= mysqli_query($link, $result_produtos);
 $total_produtos = mysqli_num_rows($resultado_produtos);
 
@@ -64,7 +64,7 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
     <tr>
         <?php
       
-        $consulta = "SELECT * FROM ordens where email = '$logado' limit $inicio,$quantidade_pg";
+        $consulta = "SELECT * FROM ordens where email = '$logado' order by cod desc limit $inicio,$quantidade_pg ";
         $resultado = mysqli_query($link,$consulta);
 
         foreach ($resultado as $rows){ 

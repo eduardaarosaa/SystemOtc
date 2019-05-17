@@ -20,6 +20,8 @@ while($rows = mysqli_fetch_array($exibir)){
     $quantidade = $rows['quantidade'];
     $carteira = $rows['carteira'];
     $email = $rows['email'];
+    $venda = $rows['valor_venda'];
+    $ordem = $rows['valor_ordem'];
     $status = $rows['status'];
     $imagem = $rows['nome'];
     
@@ -36,6 +38,8 @@ while($rows = mysqli_fetch_array($exibir)){
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>
       <th scope="col">E-mail</th>
+      <th scope="col">Cotação</th>
+      <th scope="col">Valor da ordem</th>
     </tr>
   </thead>
   <tbody>
@@ -156,6 +160,16 @@ while($rows = mysqli_fetch_array($exibir)){
       <td><?php echo $email ?></td>
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="row">
+      <td><?php echo $venda ?></td>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+      <td><?php echo $ordem ?></td>
+            </div>
+        </div>
       </tr>
         </div>
     </div>
@@ -200,11 +214,74 @@ while($rows = mysqli_fetch_array($exibir)){
 ?>
 
 <br><br>
-<h3>Observações</h3>
+
+
+
+<?php 
+ if ($nivel == 1) { ?>
+<h3>Adicionar um comentário</h3>
+
+<form action="../adm/comentarios.php" method="POST">
+<input type="hidden" name="codigo" value="<?php echo $cod_ordens ?>"/>
+<textarea type="text" name="comentario" cols='60' rows='5'></textarea>
+<br>
+<button type="submit" class="btn btn-primary">Comentar</button>
+ </form>
+ 
+ <?php 
+$config = "select * from ordens where cod='$cod_ordens'";
+$pesquisa = mysqli_query($link,$config);
+
+foreach ($pesquisa as $r){
+
+      $compra = $r['valor_compra'];
+      $venda = $r['valor_venda'];
+      $ordem = $r['valor_ordem'];
+
+  ?>
+
+
+
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Preço de compra</th>
+      <th scope="col">Preço de venda</th>
+      <th scope="col">Preço da Ordem</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+  <div class='col-md-12'>
+    <div class='row'>
+<td><?php echo $compra ?></td>
+</div>
+</div>
+<div class='col-md-12'>
+    <div class='row'>
+<td><?php echo $venda ?></td>
+</div>
+</div>
+<div class='col-md-12'>
+    <div class='row'>
+<td><?php echo $ordem ?></td>
+</div>
+</div>
+
+  </tbody>
+ </table>
+
+ <?php }?>
+
+<?php }?>
+<a href="config_ordem.php?cod= <?=$codigo;?>"><button type="submit" class="btn btn-primary">Configure os valores desta ordem</button></a>
+ <br><br>
+
+ <h3>Observações</h3>
 
 
 <?php
-$consulta="select * from comentarios where cod_ordens = '$cod_ordens' order by id desc";
+$consulta="select * from comentarios where cod_ordens = '$cod_ordens'";
 $resultado=mysqli_query($link,$consulta);
 if($resultado ==true  ){
   while($linha = mysqli_fetch_assoc($resultado)){
@@ -248,67 +325,9 @@ if($resultado ==true  ){
 </tr>
   </tbody>
 </table>
-<?php }else{ 
-  echo "Nenhuma observação adicionada" . "<br>";
-} ?>
 
-<?php 
- if ($nivel == 1) { ?>
-<h3>Adicionar um comentário</h3>
 
-<form action="../adm/comentarios.php" method="POST">
-<input type="hidden" name="codigo" value="<?php echo $cod_ordens ?>"/>
-<textarea type="text" name="comentario" cols='60' rows='5'></textarea>
-<br>
-<button type="submit" class="btn btn-primary">Comentar</button>
- </form>
  
- <?php 
-$config = "select * from ordens where cod='$cod_ordens'";
-$pesquisa = mysqli_query($link,$config);
-
-foreach ($pesquisa as $r){
-
-      $cotacao = $r['cotacao'];
-      $fee = $r['fee'];
-      $valor = $r['valor'];
-
-  ?>
-
-
-
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Cotação</th>
-      <th scope="col">Fee</th>
-      <th scope="col">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-  <div class='col-md-12'>
-    <div class='row'>
-<td><?php echo $cotacao ?></td>
-</div>
-</div>
-<div class='col-md-12'>
-    <div class='row'>
-<td><?php echo $fee ?></td>
-</div>
-</div>
-<div class='col-md-12'>
-    <div class='row'>
-<td><?php echo $valor ?></td>
-</div>
-</div>
-  </tbody>
- </table>
-
- <?php }?>
-
-
- <a href="config_ordem.php?cod= <?=$codigo;?>"><button type="submit" class="btn btn-primary">Configure os valores desta ordem</button></a>
- <br><br>
  <?php } else { echo "";} ?>
 
 <script>

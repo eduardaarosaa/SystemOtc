@@ -16,7 +16,7 @@ $cotacao = $_POST['cotacao'];
 $fee = $_POST['fee'];
 $valor = $_POST['valor'];
 
-$insert = "update ordens set cotacao = $cotacao, fee = $fee, valor = $valor where cod = $cod_ordens";
+$insert = "update ordens set cotacao = $compra, fee = $venda, valor = $ordem where cod = $cod_ordens";
 $resultado = mysqli_query($link,$insert);
 
 echo "Error: " . $insert . "<br>" . mysqli_error($link);

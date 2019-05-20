@@ -60,37 +60,51 @@ include "menu.php";
 		
 </div>
     <div class="col-md-12">
+		<div class="form-group">
+		<label for="exampleInputEmail1">Digite a fração de bitcoins inteira (Valor TOTAL):</label>
+		<div class="form-group">
+    <label for="exampleInputEmail1">Banco</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="banco" aria-describedby="emailHelp" placeholder="Digte o nome do Banco" required>
+  </div>
+
 <div class="form-group">
     <form name="form1" action="../Back/realizar_ordem.php" method="POST" enctype="multipart/form-data">
     <label for="exampleInputEmail1">Digite a fração de bitcoins:</label>
-    <input type="text" class="form-control" id="quantidade" name="quantidade" aria-describedby="emailHelp" maxlength="9" placeholder="Digite a fração de bitcoin" require="required">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Copie o número da carteira (Wallet):</label>
-    <input type="text" class="form-control" id="carteira" name="carteira" aria-describedby="emailHelp" placeholder="Digte o número da carteira" require="required">
-	</div>
-	<a class="btn btn-primary" href="javascript:void(0)" id="addInput">
+		<div id="dynamicDiv">
+				<p>
+							<input type="text" id="inputeste" class="form-control" name="quantidade"  size="20" value="" placeholder="Digite a fração" />
+							<br>
+							<a class="btn btn-primary" href="javascript:void(0)" id="addInput">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				Adicionar Campo
 			</a>
-			<br/>
-			<div id="dynamicDiv">
+		        </p>
+		    </div>
+  </div>
+  <div class="form-group">
+  
+			<div id="dynamicDiv1">
 				<p>
-							<input type="text" id="inputeste" class="form-control"  size="20" value="" placeholder="" />
+							<label for="exampleInputEmail1">Copie o número da carteira (Wallet):</label>
+							<input type="text" id="inputeste1" class="form-control" name="carteira"  size="20" value="" placeholder="Digite o número da carteira" />
 							<br>
-			        <a class="btn btn-danger" href="javascript:void(0)" id="remInput">
-								
-			        	<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-			        	Remover Campo
-					</a>
+							<a class="btn btn-primary" href="javascript:void(0)" id="addInput1">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				Adicionar Campo
+			</a>
 		        </p>
 		    </div>
 
 	
   <div class="form-group">
+		<div class="dynamicDiv2">
 	<p id="message"><b>Selecione o comprovante de pagamento</b></p>
 	<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
-  <input type="file" id="file" name="file" onchange="updatepicture(this);" />
+	<input type="file" id="inputeste2" name="file" onchange="updatepicture(this);" />
+	<a class="btn btn-primary" href="javascript:void(0)" id="addInput2">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				Adicionar Campo
+			</a>
 
 <iframe style="display:none" name="iframe"></iframe>
   </div>
@@ -143,16 +157,48 @@ jQuery(window).load(function () {
 //Função usada para adicionar os campos dinamicamente.
 </script>
 		<script>
-			$(function () {
+			$(function() {
 			    var scntDiv = $('#dynamicDiv');
 			    $(document).on('click', '#addInput', function () {
 			        $('<p>'+
-		        		'<input type="text" id="inputeste" class="form-control" size="20" value="" placeholder="" /> '+
+		        		'<input type="text" id="chuchu" class="form-control" size="20" value="" placeholder="Digite outra fração" /><br> '+
 		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput">'+
 							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
 							'Remover Campo'+
 		        		'</a>'+
 					'</p>').appendTo(scntDiv);
+			        return false;
+			    });
+
+					var scntDiv1 = $('#dynamicDiv1');
+			    $("#addInput1").on('click', function () {
+						$('<p>'+
+		        		'<input type="text" id="dynamicChuchu" class="form-control" size="20" value="" placeholder="Digite outra carteira" /><br> '+
+		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput1">'+
+							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
+							'Remover Campo'+
+		        		'</a>'+
+					'</p>').appendTo(scntDiv1);
+						return false;
+			    });
+			    $(document).on('click', '#remInput1', function () {
+		            $(this).parents('p').remove();
+			        return false;
+			    });
+	
+			    $("#addInput2").on('click', function () {
+						(
+		        		'<img style="min-height:120;min-width:200;max-height:120px;" id="image">'+
+								'<input type="file" id="inputeste2" name="file" onchange="updatepicture(this);" /> '+
+		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput2">'+
+							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
+							'Remover Campo'+
+		        		'</a>'+
+					).appendTo(scntDiv2);
+						return false;
+			    });
+			    $(document).on('click', '#remInput2', function () {
+		            $(this).parents('img').remove();
 			        return false;
 			    });
 			    $(document).on('click', '#remInput', function () {
@@ -161,6 +207,7 @@ jQuery(window).load(function () {
 			    });
 			});
 			</script>
+	
 		</div>
 </html>
 

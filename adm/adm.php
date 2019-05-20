@@ -99,6 +99,8 @@ include "../Back/conexao.php";
         echo "<button type='button' align='center' class='btn btn-danger'>Pagamento reprovado</button>";
       }elseif($status == 3){
         echo "<button type='button' align='center' class='btn btn-dark'>Processando</button>";
+      }elseif($status == 5){
+        echo "<button type='button' align='center' class='btn btn-dark'>Nota Fiscal</button>";
 
       }else{
 

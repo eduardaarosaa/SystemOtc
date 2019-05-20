@@ -10,7 +10,7 @@ include "../Back/conexao.php";
 $mes = date('m');
 echo $mes;
 
-$consulta1 = "Select sum(valor), data from ordens where status != 4 ";
+$consulta1 = "Select sum(valor), data from ordens where status != 4";
 $result1 = mysqli_query($link,$consulta1);
 foreach ($result1 as $row1){
 

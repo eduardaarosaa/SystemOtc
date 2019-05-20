@@ -97,6 +97,7 @@ while($rows = mysqli_fetch_array($exibir)){
     <a class="dropdown-item" href="pagamento_aprovado.php?cod='. $cod_ordens .'">Pagamento aprovado</a>
     <a class="dropdown-item" href="pagamento_reprovado.php?cod='. $cod_ordens .'">Pagamento reprovado</a>
     <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+    <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
     <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>
     ';
 
@@ -111,6 +112,7 @@ while($rows = mysqli_fetch_array($exibir)){
     <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
     <a class="dropdown-item" href="pagamento_reprovado.php?cod='. $cod_ordens .'">Pagamento reprovado</a>
     <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+    <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
     <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
         }elseif($status == 2){
 
@@ -123,6 +125,7 @@ while($rows = mysqli_fetch_array($exibir)){
          <a class="dropdown-item" href="pagamento_aprovado.php?cod='. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
          <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
 
 
@@ -136,7 +139,24 @@ while($rows = mysqli_fetch_array($exibir)){
          <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
          <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
+
+
+        }elseif($status == 5){
+          echo'<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Nota fiscal 
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         
+         <a class="dropdown-item" href="analise_pagamento.php?cod= '. $cod_ordens .'">Pagamento em análise</a>
+         <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
+         <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
+         <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
+         <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
+
+        // o status para ordem concluída é 4.
         }else{
           echo'<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Ordem concluída
@@ -147,6 +167,7 @@ while($rows = mysqli_fetch_array($exibir)){
          <a class="dropdown-item" href="pagamento_aprovado.php?cod= '. $cod_ordens .'">Pagamento aprovado</a>
          <a class="dropdown-item" href="pagamento_reprovado.php?cod= '. $cod_ordens .'">Pagamento reprovado</a>
          <a class="dropdown-item" href="processando.php?cod= '. $cod_ordens .'">Processamento</a>
+         <a class="dropdown-item" href="nota_fiscal.php?cod='. $cod_ordens .'">Nota Fiscal</a>
          <a class="dropdown-item" href="ordem_concluida.php?cod= '. $cod_ordens .'">Ordem Concluída</a>';
         }}
         echo '
@@ -162,12 +183,12 @@ while($rows = mysqli_fetch_array($exibir)){
         </div>
         <div class="col-md-12">
             <div class="row">
-      <td><?php echo $venda ?></td>
+      <td><?php echo 'R$' .  $venda ?></td>
             </div>
         </div>
         <div class="col-md-12">
             <div class="row">
-      <td><?php echo $ordem ?></td>
+      <td><?php echo 'R$' .  $ordem ?></td>
             </div>
         </div>
       </tr>
@@ -254,17 +275,17 @@ foreach ($pesquisa as $r){
   <tbody>
   <div class='col-md-12'>
     <div class='row'>
-<td><?php echo $compra ?></td>
+<td><?php echo 'R$' . $compra ?></td>
 </div>
 </div>
 <div class='col-md-12'>
     <div class='row'>
-<td><?php echo $venda ?></td>
+<td><?php echo 'R$' . $venda ?></td>
 </div>
 </div>
 <div class='col-md-12'>
     <div class='row'>
-<td><?php echo $ordem ?></td>
+<td><?php echo 'R$' . $ordem ?></td>
 </div>
 </div>
 

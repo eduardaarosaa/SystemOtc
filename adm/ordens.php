@@ -294,8 +294,9 @@ foreach ($pesquisa as $r){
 
  <?php }?>
 
-<?php }?>
+
 <a href="config_ordem.php?cod= <?=$codigo;?>"><button type="submit" class="btn btn-primary">Configure os valores desta ordem</button></a>
+<?php }?>
  <br><br>
 
  <h3>Observações</h3>
@@ -346,6 +347,48 @@ if($resultado ==true  ){
 </tr>
   </tbody>
 </table>
+
+<?php 
+
+if($nivel == 1){ ?>
+
+<div class="row">
+					<div class="col-md-6">
+						<div class="form-group espaco-padrao">
+							
+							<form action="../adm/envia_nota.php" method="POST" name="form1" enctype="multipart/form-data">
+							<div class="form-group">
+							<b><p id="message">Envie a Nota Fiscal</p></b>
+							<input type="hidden" id="cod" name="cod_ordem" value="<?php echo $cod_ordens; ?>" />
+							<input type="file" id="file" name="file" onchange="updatepicture(this);" />
+							
+							</div>
+							</div>
+        </div>
+</div>
+					<div class="row">
+						<div class="col-md-12">
+					<button type="submit" class="btn btn-primary" onclick="verificar_foto()">Enviar</button>
+					<input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
+						</div>
+					</div>
+					</form>
+<br><br>
+  
+<?php
+
+}else{ ?> 
+
+<a href="../adm/download_nota.php?cod_ordem= <?php echo $cod_ordens;?> ">
+<button type="submit" class="btn btn-primary"> Download Nota Fiscal</button>
+ </a>
+
+
+<?php
+}
+
+
+?>
 
 
  

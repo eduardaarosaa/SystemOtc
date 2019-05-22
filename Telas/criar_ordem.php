@@ -59,24 +59,23 @@ include "menu.php";
 		<h2 class="espaco-padrao">Criar uma ordem</h2>
 		
 </div>
-    <div class="col-md-12">
-		<div class="form-group">
-		<label for="exampleInputEmail1">Digite a fração de bitcoins inteira (Valor TOTAL):</label>
-		<div class="form-group">
-    <label for="exampleInputEmail1">Banco</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name="banco" aria-describedby="emailHelp" placeholder="Digte o nome do Banco" required>
-  </div>
-
+ 
 <div class="form-group">
-    <form name="form1" action="../Back/realizar_ordem.php" method="POST" enctype="multipart/form-data">
+		<form name="form1" action="../Back/realizar_ordem.php" method="POST" enctype="multipart/form-data">
+
+		<label for="exampleInputEmail1">Digite a fração de bitcoins inteira (Valor TOTAL):</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="valor_total" aria-describedby="emailHelp" placeholder="Digite a fração total de bitcoins" required>
+
+		</div>
+		<div class="form-group">
     <label for="exampleInputEmail1">Digite a fração de bitcoins:</label>
 		<div id="dynamicDiv">
 				<p>
-							<input type="text" id="inputeste" class="form-control" name="quantidade"  size="20" value="" placeholder="Digite a fração" />
+							<input type="text" id="inputeste" class="form-control" name="quantidade[]"  size="20" value="" placeholder="Digite a fração" />
 							<br>
 							<a class="btn btn-primary" href="javascript:void(0)" id="addInput">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				Adicionar Campo
+				Adicionar outra fração
 			</a>
 		        </p>
 		    </div>
@@ -86,24 +85,24 @@ include "menu.php";
 			<div id="dynamicDiv1">
 				<p>
 							<label for="exampleInputEmail1">Copie o número da carteira (Wallet):</label>
-							<input type="text" id="inputeste1" class="form-control" name="carteira"  size="20" value="" placeholder="Digite o número da carteira" />
+							<input type="text" id="inputeste1" class="form-control" name="carteira[]"  size="20" value="" placeholder="Digite o número da carteira" />
 							<br>
 							<a class="btn btn-primary" href="javascript:void(0)" id="addInput1">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				Adicionar Campo
+				Adicionar outra carteira
 			</a>
 		        </p>
 		    </div>
 
 	
   <div class="form-group">
-		<div class="dynamicDiv2">
+		<div id="dynamicDiv2">
 	<p id="message"><b>Selecione o comprovante de pagamento</b></p>
-	<img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br>
-	<input type="file" id="inputeste2" name="file" onchange="updatepicture(this);" />
+	<!-- <img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br> -->
+	<input type="file" id="inputeste2" name="file[]" onchange="updatepicture(this);" />
 	<a class="btn btn-primary" href="javascript:void(0)" id="addInput2">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				Adicionar Campo
+				Adicionar outro comprovante
 			</a>
 
 <iframe style="display:none" name="iframe"></iframe>
@@ -150,6 +149,7 @@ include "menu.php";
 
 </body>
 <script>
+//Script que carrega o load na tela inicial.
 jQuery(window).load(function () {
       $(".loader").delay(50).fadeOut("slow"); //retire o delay quando for copiar!
     $("#tudo_page").toggle("fast");
@@ -161,7 +161,7 @@ jQuery(window).load(function () {
 			    var scntDiv = $('#dynamicDiv');
 			    $(document).on('click', '#addInput', function () {
 			        $('<p>'+
-		        		'<input type="text" id="chuchu" class="form-control" size="20" value="" placeholder="Digite outra fração" /><br> '+
+		        		'<input type="text" id="chuchu" class="form-control" name="quantidade[]" size="20" value="" placeholder="Digite outra fração" /><br> '+
 		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput">'+
 							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
 							'Remover Campo'+
@@ -173,7 +173,7 @@ jQuery(window).load(function () {
 					var scntDiv1 = $('#dynamicDiv1');
 			    $("#addInput1").on('click', function () {
 						$('<p>'+
-		        		'<input type="text" id="dynamicChuchu" class="form-control" size="20" value="" placeholder="Digite outra carteira" /><br> '+
+		        		'<input type="text" id="dynamicChuchu" class="form-control" name="carteira[]" size="20" value="" placeholder="Digite outra carteira" /><br> '+
 		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput1">'+
 							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
 							'Remover Campo'+
@@ -185,27 +185,31 @@ jQuery(window).load(function () {
 		            $(this).parents('p').remove();
 			        return false;
 			    });
-	
+					var scntDiv2 = $('#dynamicDiv2');
 			    $("#addInput2").on('click', function () {
-						(
-		        		'<img style="min-height:120;min-width:200;max-height:120px;" id="image">'+
-								'<input type="file" id="inputeste2" name="file" onchange="updatepicture(this);" /> '+
+						$('<p>'+
+								'<br>'+
+								'<input type="file" id="dynamicChuchu2" name="file[]" onchange="updatepicture(this);" />  '+
 		        		'<a class="btn btn-danger" href="javascript:void(0)" id="remInput2">'+
 							'<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> '+
 							'Remover Campo'+
 		        		'</a>'+
-					).appendTo(scntDiv2);
+					'</p>').appendTo(scntDiv2);
 						return false;
 			    });
 			    $(document).on('click', '#remInput2', function () {
-		            $(this).parents('img').remove();
-			        return false;
-			    });
-			    $(document).on('click', '#remInput', function () {
 		            $(this).parents('p').remove();
 			        return false;
 			    });
+				
+			    $(document).on('click', '#remInput', function () {
+		            $(this).parents('p').remove();
+			        return false;
+
+			    });
 			});
+
+	
 			</script>
 	
 		</div>

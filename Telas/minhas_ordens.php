@@ -52,7 +52,8 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
   <thead>
     <tr>
       <th scope="col">Codigo</th>
-      <th scope="col">Quantidade</th>
+      <th scope="col">Quantidade total</th>
+      <th scope="col">Quantidades fracionadas</th>
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>
       <th scope="col">Detalhes</th>
@@ -70,6 +71,7 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
         foreach ($resultado as $rows){ 
 
             $codigo = $rows['cod'];
+            $valor_total = $rows['valor_total'];
             $quantidade = $rows['quantidade'];
             $carteira = $rows['carteira'];
             $status = $rows['status'];
@@ -80,6 +82,11 @@ $total_produtos = mysqli_num_rows($resultado_produtos);
         <div class="col-md-12">
             <div class="row">
       <th scope="row"><?php echo $codigo?></th>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+      <th scope="row"><?php echo $valor_total?></th>
             </div>
         </div>
         <div class="col-md-12">

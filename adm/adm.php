@@ -63,6 +63,7 @@ include "../Back/conexao.php";
        foreach ($resultado as $rows){ 
 
            $codigo = $rows['cod'];
+           $valor_total = $rows['valor_total'];
            $quantidade = $rows['quantidade'];
            $carteira = $rows['carteira'];
            $status = $rows['status'];
@@ -72,6 +73,11 @@ include "../Back/conexao.php";
         <div class="col-md-12">
             <div class="row">
       <th scope="row"><?php echo $codigo?></th>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+      <th scope="row"><?php echo $valor_total?></th>
             </div>
         </div>
         <div class="col-md-12">

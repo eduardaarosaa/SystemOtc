@@ -17,6 +17,7 @@ $resultado="SELECT * FROM ordens where cod='$cod_ordens'";
 $exibir = mysqli_query($link,$resultado);
 while($rows = mysqli_fetch_array($exibir)){
     $codigo = $rows['cod'];
+    $valor_total= $rows['valor_total'];
     $quantidade = $rows['quantidade'];
     $carteira = $rows['carteira'];
     $email = $rows['email'];
@@ -34,7 +35,8 @@ while($rows = mysqli_fetch_array($exibir)){
   <thead>
     <tr>
       <th width="1%" scope="col">Codigo</th>
-      <th scope="col">Quantidade</th>
+      <th scope="col">Quantidade total</th>
+      <th scope="col">Quantidades Fracionadas</th>
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>
       <th scope="col">E-mail</th>
@@ -47,6 +49,11 @@ while($rows = mysqli_fetch_array($exibir)){
 <div class="col-md-12">
             <div class="row">
       <th width="1%" scope="row"><?php echo $codigo?></th>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+      <td><?php echo  $valor_total ?></td>
             </div>
         </div>
         <div class="col-md-12">
@@ -206,6 +213,7 @@ while($rows = mysqli_fetch_array($exibir)){
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Ver comprovante de pagamento
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

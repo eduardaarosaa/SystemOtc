@@ -58,12 +58,17 @@ while($rows = mysqli_fetch_array($exibir)){
         </div>
         <div class="col-md-12">
             <div class="row">
-      <td><?php echo  $quantidade ?></td>
+      <td><?php explode(",", $quantidade); 
+      $replace = str_replace('-' , "<br>", $quantidade);
+      print_r($replace)  ?></td>
             </div>
         </div>
         <div class="col-md-12">
             <div class="row">
-      <td><?php echo $carteira ?></td>
+      <td><?php explode(",",$carteira);
+      $replace1 = str_replace(',', "<br>", $carteira);
+      print_r($replace1);
+      ?></td>
             </div>
         </div>
         <div class="col-md-12">
@@ -214,7 +219,13 @@ while($rows = mysqli_fetch_array($exibir)){
   Ver comprovante de pagamento
 </button>
 
+<?php 
+$explode = explode(",", $imagem);
+$result = count($explode);
+?>
 
+
+  
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -224,7 +235,17 @@ while($rows = mysqli_fetch_array($exibir)){
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-      <img src="../anexos/<?php echo $imagem; ?>"   width='450' height='450'/>      </div>
+      <?php if($result == 1){ ?>
+      <img src="../anexos/<?php echo $explode[0]; ?>"   width='450' height='450'/>
+      <?php }elseif($result == 2){?>
+      <img src="../anexos/<?php echo $explode[0]; ?>"   width='450' height='450'/>
+      <img src="../anexos/<?php echo $explode[1]; ?>"   width='450' height='450'/>
+      <?php } else{ ?>
+       <img src="../anexos/<?php echo $explode[0]; ?>"   width='450' height='450'/>
+      <img src="../anexos/<?php echo $explode[1]; ?>"   width='450' height='450'/>
+      <img src="../anexos/<?php echo $explode[2]; ?>"   width='450' height='450'/>
+      <?php } ?>
+      </div> 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         

@@ -64,7 +64,7 @@ include "menu.php";
         <div class="form-group">
 
             <label for="exampleInputEmail1">Digite a fração de bitcoins inteira (Valor TOTAL):</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="valor_total"
+            <input type="text" class="form-control btc" id="exampleInputEmail1" name="valor_total"
                 aria-describedby="emailHelp" placeholder="Digite a fração total de bitcoins" required>
 
         </div>
@@ -72,7 +72,7 @@ include "menu.php";
             <label for="exampleInputEmail1">Digite a fração de bitcoins:</label>
             <div id="dynamicDiv">
                 <p>
-                    <input type="text" id="inputeste" class="form-control" name="quantidade[]" size="20" value=""
+                    <input type="text" id="inputeste" class="form-control btc" name="quantidade[]" size="20" value=""
                         placeholder="Digite a fração" />
                     <br>
 
@@ -168,7 +168,7 @@ jQuery(window).load(function () {
             $(document).on('click', '#addInput', function campos(event) {
                 event.preventDefault();
                 $('<p>' +
-                    '<input type="text" id="chuchu" class="form-control" name="quantidade[]" size="20"  placeholder="Digite outra fração" /><br> ' +
+                    '<input type="text" id="chuchu" class="form-control btc" name="quantidade[]" size="20"  placeholder="Digite outra fração" /><br> ' +
                     '<a class="btn btn-danger" href="javascript:void(0)" id="remInput">' +
                     '<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> ' +
                     'Remover Campo' +
@@ -221,6 +221,13 @@ jQuery(window).load(function () {
         //     alert("Handler for .submit() called.");
         //     event.preventDefault();
         // });
+
+        
+    $(document).ready(function(){
+        $('.btc').mask('0,00000000', {reverse: true});
+    }
+  );
+ 
     </script>
 </html>
 

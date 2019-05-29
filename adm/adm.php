@@ -44,6 +44,7 @@ include "../Back/conexao.php";
   <thead>
     <tr>
       <th scope="col">Codigo</th>
+      <th scope="col">Valor Total</th>
       <th scope="col">Quantidade</th>
       <th scope="col">Carteira</th>
       <th scope="col">Status</th>

@@ -6,10 +6,8 @@ $valor_total = $_POST['valor_total'];
 $quantidade = implode('-',$_POST['quantidade']);
 $carteira = implode(',', $_POST['carteira']);
 $tipo = implode(',',$_FILES['file']['type']);
-$nome = implode(',', $_FILES['file']['name']);  
-
-echo $nome;
-
+foreach($_FILES['file']['name'] as $nome){
+$nome = $numero . implode(',', $_FILES['file']['name']);  
 
 
 
@@ -33,15 +31,15 @@ echo $nome;
     }
  $logado = $_SESSION['email'];
        
-//  $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
-//      '$valor_total','$quantidade','$carteira','$tipo','$nome1','$tamanho','$logado','$data1','$hora','0')";
- 
+ $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
+   '$valor_total','$quantidade','$carteira','$tipo','$nome','$tamanho','$logado','$data1','$hora','0')";
+ }
 
-//   $resposta = mysqli_query($link,$inserir);
-//  // echo "Error: " . $inserir . "<br>" . mysqli_error($link);
+ $resposta = mysqli_query($link,$inserir);
+echo "Error: " . $inserir . "<br>" . mysqli_error($link);
+var_dump($nome);
 
-
-
+    
 //     }
 
 // if($resposta == true){

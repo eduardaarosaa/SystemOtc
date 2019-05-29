@@ -163,10 +163,14 @@ jQuery(window).load(function () {
 //Função usada para adicionar os campos dinamicamente.
 </script>
 <script>
-		      $(function campos() {
+    var contador = 0;
+    var limite = 3;
+
+		    $(function campos() {
             var scntDiv = $('#dynamicDiv');
             $(document).on('click', '#addInput', function campos(event) {
                 event.preventDefault();
+                if (contador < limite) {
                 $('<p>' +
                     '<input type="text" id="chuchu" class="form-control btc" name="quantidade[]" size="20"  placeholder="Digite outra fração" /><br> ' +
                     '<a class="btn btn-danger" href="javascript:void(0)" id="remInput">' +
@@ -174,12 +178,14 @@ jQuery(window).load(function () {
                     'Remover Campo' +
                     '</a>' +
                     '</p>').appendTo(scntDiv);
-
+                    contador++; // incremento do contador
+        }
                 return false;
             });
 
             var scntDiv1 = $('#dynamicDiv1');
             $("#addInput1").on('click', function campos() {
+                if (contador < limite) {
                 $('<p>' +
                     '<input type="text" id="dynamicChuchu" class="form-control" name="carteira[]" size="20"  placeholder="Digite outra carteira" /><br> ' +
                     '<a class="btn btn-danger" href="javascript:void(0)" id="remInput1">' +
@@ -187,6 +193,8 @@ jQuery(window).load(function () {
                     'Remover Campo' +
                     '</a>' +
                     '</p>').appendTo(scntDiv1);
+                    contador++; // incremento do contador
+        }
                 return false;
             });
             $(document).on('click', '#remInput1', function campos() {
@@ -195,6 +203,7 @@ jQuery(window).load(function () {
             });
             var scntDiv2 = $('#dynamicDiv2');
             $("#addInput2").on('click', function campos() {
+                if (contador < limite) {
                 $('<p>' +
                     '<br>' +
                     '<input type="file" id="dynamicChuchu2" name="file[]" onchange="updatepicture(this);" />  ' +
@@ -203,6 +212,8 @@ jQuery(window).load(function () {
                     'Remover Campo' +
                     '</a>' +
                     '</p>').appendTo(scntDiv2);
+                    contador++; // incremento do contador
+        }
                 return false;
             });
             $(document).on('click', '#remInput2', function campos() {

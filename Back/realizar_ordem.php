@@ -6,9 +6,26 @@ $valor_total = $_POST['valor_total'];
 $quantidade = implode('-',$_POST['quantidade']);
 $carteira = implode(',', $_POST['carteira']);
 $tipo = implode(',',$_FILES['file']['type']);
-$nome = implode(',' ,$_FILES['file']['name']);
+$nome = $_FILES['file']['name'];
 
-var_dump($nome);
+$result = count($nome);
+// echo $result;
+
+$novo = [];
+ for ($i = 0 ; $i < $result; $i++){
+
+  $hehe = $numero .$nome[$i];
+  array_push($novo,$hehe);
+
+  //print_r($novo);
+
+}
+$arra = implode(',', $novo);
+print_r($arra);
+
+
+
+//var_dump($nome);
 $tamanho = implode(',',$_FILES['file']['size']);
 
 
@@ -38,12 +55,12 @@ $tamanho = implode(',',$_FILES['file']['size']);
 
   $logado = $_SESSION['email'];
        
-//  $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
-//   '$valor_total','$quantidade','$carteira','$tipo','$nome','$tamanho','$logado','$data1','$hora','0')";
+ $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
+  '$valor_total','$quantidade','$carteira','$tipo','$arra','$tamanho','$logado','$data1','$hora','0')";
  
  
-//  $resposta = mysqli_query($link,$inserir);
-// echo "Error: " . $inserir . "<br>" . mysqli_error($link);
+ $resposta = mysqli_query($link,$inserir);
+//echo "Error: " . $inserir . "<br>" . mysqli_error($link);
 
  
     

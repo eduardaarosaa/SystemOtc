@@ -6,12 +6,14 @@ $valor_total = $_POST['valor_total'];
 $quantidade = implode('-',$_POST['quantidade']);
 $carteira = implode(',', $_POST['carteira']);
 $tipo = implode(',',$_FILES['file']['type']);
-foreach($_FILES['file']['name'] as $nome){
-$nome = $numero . implode(',', $_FILES['file']['name']);  
+$nome = implode(',' ,$_FILES['file']['name']);
+
+var_dump($nome);
+$tamanho = implode(',',$_FILES['file']['size']);
 
 
 
-    $tamanho = implode(',',$_FILES['file']['size']);
+	 
 
     $dia = mktime(date('d'), date('m'), date('y'));
 
@@ -23,22 +25,27 @@ $nome = $numero . implode(',', $_FILES['file']['name']);
 
     $hora = gmdate("H:i:s", $time);
 
+
+
+		
     foreach( $_FILES['file']['name'] as $key =>$name){
 
         $nome1 =  $numero . ($_FILES['file']['name'][$key]);
 
          move_uploaded_file( $_FILES['file']['tmp_name'][$key], "C:\\xampp\\htdocs\\otc\\anexos\\$nome1");	
     }
- $logado = $_SESSION['email'];
+
+
+  $logado = $_SESSION['email'];
        
- $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
-   '$valor_total','$quantidade','$carteira','$tipo','$nome','$tamanho','$logado','$data1','$hora','0')";
- }
+//  $inserir = "insert into ordens(valor_total,quantidade,carteira,tipo,nome,tamanho,email,data,hora,status)values(
+//   '$valor_total','$quantidade','$carteira','$tipo','$nome','$tamanho','$logado','$data1','$hora','0')";
+ 
+ 
+//  $resposta = mysqli_query($link,$inserir);
+// echo "Error: " . $inserir . "<br>" . mysqli_error($link);
 
- $resposta = mysqli_query($link,$inserir);
-echo "Error: " . $inserir . "<br>" . mysqli_error($link);
-var_dump($nome);
-
+ 
     
 //     }
 

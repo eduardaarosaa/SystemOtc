@@ -103,7 +103,7 @@ include "menu.php";
                 <div id="dynamicDiv2">
                     <p id="message"><b>Selecione o comprovante de pagamento</b></p>
                     <!-- <img style="min-height:120;min-width:200;max-height:120px;" id="image"/><br> -->
-                    <input type="file" id="inputeste2" name="file[]" onchange="updatepicture(this);" />
+                    <input type="file" id="inputeste2" name="file[]" multiple onchange="updatepicture(this);" />
                     <a class="btn btn-primary" href="javascript:void(0)" id="addInput2">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         Adicionar outro comprovante
@@ -113,7 +113,7 @@ include "menu.php";
                 </div>
             </div>
 
-            <button type="submit" id="cadastrar" style="margin-left:1%" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" id="cadastrar" name="upload" style="margin-left:1%" class="btn btn-primary">Cadastrar</button>
         </div>
     </form>
 

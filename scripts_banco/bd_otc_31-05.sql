@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `bd_otc`
 --
-
+create database bd_otc;
+use bd_otc;
 -- --------------------------------------------------------
 
 --

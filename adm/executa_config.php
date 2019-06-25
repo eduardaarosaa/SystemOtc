@@ -14,7 +14,7 @@ include "../Back/conexao.php";
 $cod_ordens = $_POST['cod'];
 $valor_compra = $_POST['valor_compra'];
 $valor_venda = $_POST['valor_venda'];
-$valor_ordem = $_POST['valor_venda'];
+$valor_ordem = $_POST['valor_ordem'];
 
 $insert = "update ordens set valor_compra = '$valor_compra', valor_venda = '$valor_venda', valor_ordem = '$valor_ordem' where cod = $cod_ordens";
 $resultado = mysqli_query($link,$insert);
